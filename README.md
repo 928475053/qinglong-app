@@ -4,7 +4,7 @@
 
 基于[qinglong](https://github.com/whyour/qinglong)开源项目
 
-各个历史版本在 [Release](https://github.com/qinglongapp/qinglong_app/releases) 里下载
+可前往[**Release**](https://github.com/youink/qinglong-app/releases)下载**客户端**使用，非**服务端**！
 
 
 
