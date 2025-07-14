@@ -25,7 +25,11 @@ subprojects {
 subprojects {
     project.evaluationDependsOn(':app')
 }
-
+buildTypes {
+        release {
+            signingConfig null
+        }
+    }
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
