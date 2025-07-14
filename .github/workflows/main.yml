@@ -50,7 +50,7 @@ jobs:
           sed -i 's|distributionUrl=https\://services.gradle.org/distributions/gradle-.*-all.zip|distributionUrl=file://'$HOME'/gradle-6.7-all.zip|' gradle/wrapper/gradle-wrapper.properties
 
       - name: Build APK (unsigned)
-        run: flutter build apk --release --output=app-release-unsigned.apk
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
