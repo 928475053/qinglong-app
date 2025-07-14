@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '15'
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -42,11 +42,11 @@ jobs:
       - name: Update Gradle wrapper to compatible version
         run: |
           cd android
-          # 下载 Gradle 7.4.2 版本
-          curl -L https://services.gradle.org/distributions/gradle-7.4.2-all.zip -o gradle-7.4.2-all.zip
-          unzip gradle-7.4.2-all.zip -d $HOME
+          # 下载 gradle-6.7-all.zip 版本
+          curl -L https://services.gradle.org/distributions/gradle-6.7-all.zip -o gradle-6.7-all.zip
+          unzip gradle-6.7-all.zip -d $HOME
           # 修改 gradle-wrapper.properties 文件
-          sed -i 's|distributionUrl=https\://services.gradle.org/distributions/gradle-.*-all.zip|distributionUrl=file://'$HOME'/gradle-7.4.2-all.zip|' gradle/wrapper/gradle-wrapper.properties
+          sed -i 's|distributionUrl=https\://services.gradle.org/distributions/gradle-.*-all.zip|distributionUrl=file://'$HOME'/gradle-6.7-all.zip|' gradle/wrapper/gradle-wrapper.properties
 
       - name: Build APK
         run: flutter build apk --release
