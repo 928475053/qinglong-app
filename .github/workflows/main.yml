@@ -39,11 +39,14 @@ jobs:
       - name: Install Flutter dependencies
         run: flutter pub get
 
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Check Flutter Version
-        run: flutter --version
+      - name: Update Gradle wrapper to compatible version
+        run: |
+          cd android
+          # 下载 Gradle 7.4.2 版本
+          curl -L https://services.gradle.org/distributions/gradle-7.4.2-all.zip -o gradle-7.4.2-all.zip
+          unzip gradle-7.4.2-all.zip -d $HOME
+          # 修改 gradle-wrapper.properties 文件
+          sed -i 's|distributionUrl=https\://services.gradle.org/distributions/gradle-.*-all.zip|distributionUrl=file://'$HOME'/gradle-7.4.2-all.zip|' gradle/wrapper/gradle-wrapper.properties
 
       - name: Build APK
         run: flutter build apk --release
