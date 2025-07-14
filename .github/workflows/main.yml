@@ -34,7 +34,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          flutter-version: '2.10.1'  # 指定 Flutter 版本为 2.10.1
+          flutter-version: '3.3.10'  # 指定 Flutter 版本为 3.3.10
           cache: true
 
       - name: Install Flutter dependencies
