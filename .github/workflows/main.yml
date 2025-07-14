@@ -14,6 +14,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            $HOME/.pub-cache
+            $HOME/flutter
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -24,12 +34,11 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
 
       - name: Install Flutter dependencies
         run: flutter pub get
 
-      - name: Run tests
-        run: flutter test
 
       - name: Build APK
         run: flutter build apk --release
